@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.row{
+    margin-left: 100px;
+}
+
+input{
+    margin-top: 20px;
+}
+
+button{
+    margin-top: 20px;
+}
+
+.footer{
+    position: relative;
+    margin-top: 600px;
+}
+
