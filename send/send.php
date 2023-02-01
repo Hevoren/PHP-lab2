@@ -1,10 +1,16 @@
 <?php
 
+$name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
 $number = filter_var(trim($_POST['number']), FILTER_SANITIZE_STRING);
 $adress = ($_POST['adress']);
 $choice = ($_POST['choice']);
 
-if(mb_strlen($number) != 11 || is_numeric($adress)) {
+if(mb_strlen($name) < 5){
+    echo "Недопустимое имя/название";
+    exit();
+}
+
+else if(mb_strlen($number) != 11 || is_numeric($adress)) {
     echo "Недопустимая длина номера";
     exit();
 } else if(mb_strlen($adress) < 20 || mb_strlen($adress) > 100) {
@@ -21,8 +27,8 @@ if($mysql->connect_error){
 
 
 
-$mysql->query("iNSERT INTO `$choice` (`number`, `adress`)
-        VALUES('$number', '$adress')");
+$mysql->query("INSERT INTO `$choice` (`name`, `number`, `adress`)
+        VALUES('$name','$number', '$adress')");
 
 $mysql->close();
 

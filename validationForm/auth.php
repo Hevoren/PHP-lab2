@@ -6,6 +6,10 @@
 
     $mysql = new mysqli('localhost', 'root', '', 'AdressBook');
 
+    if($mysql->connect_error){
+        die("Ошибка: " . $mysql->connect_error);
+    }
+
     $result = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login' AND `pass` = '$pass'");
 
     $user = $result->fetch_assoc();
